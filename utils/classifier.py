@@ -9,7 +9,7 @@ import torchvision.transforms as tf
 import cv2
 
 from model.model import ConvNet 
-from utils.preprocess import cv2_to_array
+from utils.cv2_to_np import cv2_to_array
 
 
 class Classifier():
@@ -27,6 +27,8 @@ class Classifier():
         # Convert img to np array
         arr = cv2_to_array(img)
         
+        print(arr.shape)
+        
         with torch.no_grad():
             out = self.net(self.transform(arr))
             pred = int(torch.max(out, dim=1)[1][0])
@@ -36,4 +38,6 @@ class Classifier():
 
 if __name__ == "__main__":
     classifier = Classifier()
+    classifier.predict('data/5.1.png')
+    
     import ipdb; ipdb.set_trace()

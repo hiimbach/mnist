@@ -13,9 +13,12 @@ def trace(weight_path, save_path="weight/scripted.pt"):
     net.load_state_dict(torch.load(weight_path))
     
     # Trace
+    net.eval()
     rand_inp = torch.rand(1,1,28,28)
     module = torch.jit.trace(net.forward, rand_inp)
     module.save(save_path)
+    
+    print(f"scripted model is saved in {save_path}")
     
     
 if __name__ == "__main__":
