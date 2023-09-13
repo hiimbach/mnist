@@ -8,3 +8,5 @@ tqdm
 matplotlib
 uvicorn 
 python-multipart
+opencv-python-headless
+onnx
