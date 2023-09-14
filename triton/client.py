@@ -10,7 +10,7 @@ import numpy as np
 import cv2
 
 # Set up connection with Triton Inference Server
-client = httpclient.InferenceServerClient(url="localhost:8000")
+client = httpclient.InferenceServerClient(url="192.168.65.4:8000/")
 
 # Preprocess Images
 frame = cv2.imread("data/5.1.png", 0)
